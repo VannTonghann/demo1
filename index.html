@@ -9,13 +9,13 @@
 </head>
 <body>
 
-    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbzf0ehxNJDapqcPbCv9sxcZxwYnIZrDmp5loPQKpzKP5MfbkvKkEmI82zUtFP2NdxhCaQ/exec" allowfullscreen="true"></iframe>
+    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfy.../exec" allowfullscreen="true"></iframe>
 
     <script>
-        // កូដសម្រាប់រង់ចាំស្តាប់ការបញ្ជាពី Google Apps Script ឱ្យប្តូរទំព័រ
+        // កូដនេះមានតួនាទីចាំទទួលសារពី Google Script ពេលមានគេចុច Menu
         window.addEventListener("message", function(event) {
             if (event.data && event.data.action === "navigate") {
-                // នៅពេល Google ប្រាប់ឱ្យប្តូរទំព័រ, GitHub នឹងប្តូរ Link នៅក្នុង iframe នេះ
+                // ផ្លាស់ប្តូរ Link នៅក្នុង iframe ទៅតាម Form ដែលបានជ្រើសរើស
                 document.getElementById("appFrame").src = event.data.url;
             }
         });
