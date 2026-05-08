@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ប្រព័ន្ធគ្រប់គ្រងការសន្សំ</title>
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
-    </style>
+    <title>កម្មវិធីគ្រប់គ្រងការសន្សំសិស្ស</title>
 </head>
-<body>
-
-    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbx2-am4TW2r-8u5fgiFusftfj5SQ5HR8oCdv1Ak118hVm9jLSuB5DDNS3lZ5dgQ4ryA5w/exec" allowfullscreen="true"></iframe>
+<body style="margin: 0; overflow: hidden;">
+    <iframe 
+        src="https://script.google.com/macros/s/AKfycbwAK7npN3X-SBYzrHid-2-U8vW9IVbR6aNgxuKL9vq9DQQlEz_neHHSSJ7dwxiZJYY4Ew/exec"
+        width="100%"
+        height="100%"
+        allowfullscreen="true"
+        /* បន្ថែម sandbox នៅទីនេះ */
+        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-modals"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+    </iframe>
 
     <script>
-        // កូដនេះមានតួនាទីចាំទទួលសារពី Google Script ពេលមានគេចុច Menu
-        window.addEventListener("message", function(event) {
-            if (event.data && event.data.action === "navigate") {
-                // ផ្លាស់ប្តូរ Link នៅក្នុង iframe ទៅតាម Form ដែលបានជ្រើសរើស
-                document.getElementById("appFrame").src = event.data.url;
+        // ចំណាំ៖ ការធ្វើ Fullscreen ភ្លាមៗពេល Load អាចនឹងត្រូវបាន Browser មួយចំនួនបិទ (Block)
+        // ប្រសិនបើមិនមានការចុច (User Interaction) ពីអ្នកប្រើប្រាស់
+        window.onload = function() {
+            var iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen().catch((err) => {
+                    console.log("Fullscreen ត្រូវបានបដិសេធ៖ " + err.message);
+                });
             }
-        });
+        };
     </script>
-
 </body>
 </html>
