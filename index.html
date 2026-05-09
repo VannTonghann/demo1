@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="km">
 <head>
     <meta charset="UTF-8">
-    <title>ប្រព័ន្ធសន្សំប្រាក់</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ប្រព័ន្ធគ្រប់គ្រង</title>
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbyLReyph6ZFKhg-h0tqLh99KPcjOjn85w79fAtU-fW1tIpRcAaBvzHu8xIKJGa-vgpqzw/exec"></iframe>
+
+    <iframe id="appFrame"></iframe>
+
+    <script>
+        // ១. ចាប់យកឈ្មោះ Page ពី Link របស់ GitHub (ឧ. បើមាន ?page=Home វាទាញយក Home)
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageName = urlParams.get('page') || 'Index'; // បើគ្មានទេ យក Index ជាទំព័រដើម
+        
+        // ២. Link Web App របស់ Google Script របស់អ្នក (ត្រូវប្រាកដថាជា Link ដែល Deploy ចុងក្រោយ)
+        const gasUrl = "https://script.google.com/macros/s/AKfycbyLReyph6ZFKhg-h0tqLh99KPcjOjn85w79fAtU-fW1tIpRcAaBvzHu8xIKJGa-vgpqzw/exec"; 
+        
+        // ៣. បញ្ចូល Link ទៅក្នុង Iframe ដោយភ្ជាប់ឈ្មោះ Page ទៅជាមួយ
+        document.getElementById("appFrame").src = gasUrl + "?page=" + pageName;
+    </script>
+
 </body>
 </html>
